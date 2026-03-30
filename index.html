@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- 🔍 页面标题 & SEO -->
+  <!-- 页面标题 & SEO -->
   <title data-zh="郭彬 | 复几何与概率" data-en="Bin Guo | Complex Geometry & Probability">Bin Guo | 郭彬</title>
   <meta name="description" content="Bin Guo (郭彬) - Ph.D. candidate at AMSS, CAS. Research: complex geometry, random holomorphic sections.">
   
-  <!-- 🎨 基础样式（简洁学术风） -->
   <style>
-    /* ===== 颜色变量（修改这里可一键换主题色）===== */
+    /* ===== 颜色变量 ===== */
     :root {
-      --primary: #2c5282;        /* 主色调：学术蓝 */
-      --primary-light: #ebf4ff;  /* 浅色背景 */
-      --text: #2d3748;           /* 正文颜色 */
-      --text-light: #718096;     /* 次要文字 */
-      --bg: #ffffff;             /* 页面背景 */
-      --link: #3182ce;           /* 链接颜色 */
-      --border: #e2e8f0;         /* 边框颜色 */
+      --primary: #2c5282;
+      --primary-light: #ebf4ff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --bg: #ffffff;
+      --link: #3182ce;
+      --border: #e2e8f0;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
     }
 
     /* ===== 基础布局 ===== */
@@ -27,67 +27,133 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
       line-height: 1.6;
       color: var(--text);
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
-      background: var(--bg);
+      background: #f8fafc;
     }
 
-    /* ===== 头部样式 ===== */
-    header {
-      text-align: center;
-      padding-bottom: 1.5rem;
-      border-bottom: 3px solid var(--primary);
+    /* ===== 头部卡片：照片在左，信息在右（全新布局）===== */
+    .profile-card {
+      background: var(--bg);
+      border-radius: 1.5rem;
+      box-shadow: var(--card-shadow);
+      padding: 1.8rem;
       margin-bottom: 2rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
     }
     
-    /* 👤 头像样式 */
+    /* 左侧头像区域 */
+    .profile-avatar {
+      flex-shrink: 0;
+    }
     .avatar {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--primary);
-      box-shadow: 0 6px 20px rgba(44, 82, 130, 0.15);
-      margin: 0 auto 1rem;
+      box-shadow: 0 8px 20px rgba(44, 82, 130, 0.2);
+      transition: transform 0.25s ease;
       display: block;
-      transition: transform 0.3s ease;
     }
     .avatar:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
     
-    h1 { color: var(--primary); margin: 0.5rem 0; font-size: 1.8rem; }
-    .subtitle { color: var(--text-light); margin: 0.3rem 0; }
-    
-    /* 联系方式 & 语言切换按钮 */
-    .header-actions {
-      display: flex;
-      justify-content: center;
+    /* 右侧信息区域 */
+    .profile-info {
+      flex: 1;
+    }
+    .profile-info h1 {
+      color: var(--primary);
+      font-size: 1.9rem;
+      margin: 0 0 0.25rem 0;
+      letter-spacing: -0.01em;
+    }
+    .profile-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--primary);
+      padding-left: 0.75rem;
+    }
+    .institution {
+      background: var(--primary-light);
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin: 0.5rem 0 0.75rem 0;
+      font-weight: 500;
+    }
+    .email-display {
+      font-family: 'SF Mono', 'Menlo', monospace;
+      background: #f1f5f9;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: inline-flex;
       align-items: center;
-      gap: 1rem;
-      margin-top: 0.8rem;
-      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0.8rem 0;
+      border: 1px solid #e2edff;
+      color: #1e4b7a;
     }
-    .contact a {
+    .email-display i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .contact-links a {
       color: var(--link);
       text-decoration: none;
-      margin: 0 0.4rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
     }
-    .contact a:hover { text-decoration: underline; }
+    .contact-links a:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
     
-    /* 语言切换按钮 */
+    /* 语言切换按钮（仍置于头部卡片附近） */
+    .lang-btn-wrapper {
+      margin-top: 0.8rem;
+    }
     #lang-toggle {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 0.4rem 0.9rem;
-      border-radius: 6px;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: background 0.2s;
+      font-weight: 500;
     }
-    #lang-toggle:hover { background: #2a4365; }
+    #lang-toggle:hover {
+      background: #2a4365;
+    }
 
     /* ===== 内容区块 ===== */
     section { margin: 2rem 0; }
@@ -109,39 +175,40 @@
       margin: 1rem 0;
       padding: 0.8rem 0 0.8rem 1rem;
       border-left: 3px solid var(--border);
+      transition: border 0.2s;
     }
     .paper:hover { border-left-color: var(--primary); }
     .paper-title { font-weight: 500; margin-bottom: 0.2rem; }
     .paper-authors { font-style: italic; color: var(--text-light); margin: 0.2rem 0; }
-    .paper-journal { margin: 0.3rem 0; }
-    
-    /* 论文链接按钮 */
+    .paper-journal { margin: 0.3rem 0; font-size: 0.95rem; }
     .paper-links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
     .paper-links a {
       color: var(--link);
       text-decoration: none;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.7rem;
       background: var(--primary-light);
-      border-radius: 4px;
-      font-size: 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: 0.1s;
     }
-    .paper-links a:hover { background: #dbeafe; text-decoration: none; }
+    .paper-links a:hover { background: #dbeafe; }
 
-    /* ===== 研究兴趣标签 ===== */
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+    /* 研究兴趣标签 */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0 0.5rem; }
     .tag {
       background: var(--primary-light);
       color: var(--primary);
-      padding: 0.2rem 0.6rem;
+      padding: 0.25rem 0.8rem;
       border-radius: 999px;
       font-size: 0.85rem;
+      font-weight: 500;
     }
 
-    /* ===== 页脚 ===== */
+    /* 页脚 */
     footer {
       text-align: center;
       margin-top: 3rem;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       color: var(--text-light);
       font-size: 0.9rem;
@@ -149,83 +216,81 @@
     footer a { color: var(--link); text-decoration: none; margin: 0 0.3rem; }
 
     /* ===== 双语切换核心逻辑 ===== */
-    /* 默认：显示英文，隐藏中文 */
     [data-zh] { display: none; }
     [data-en] { display: inline; }
-    
-    /* 当 html 标签有 lang="zh" 时：显示中文，隐藏英文 */
     html[lang="zh"] [data-zh] { display: inline; }
     html[lang="zh"] [data-en] { display: none; }
     
-    /* 特殊处理：块级元素用 display: block */
+    /* 块级双语支持 */
     [data-zh-block], html[lang="zh"] [data-zh-block] { display: none; }
     html[lang="zh"] [data-zh-block] { display: block; }
     html[lang="zh"] [data-en-block] { display: none; }
 
-    /* ===== 移动端适配 ===== */
-    @media (max-width: 600px) {
-      body { padding: 1rem; }
-      h1 { font-size: 1.5rem; }
-      .avatar { width: 110px; height: 110px; }
-      .header-actions { flex-direction: column; gap: 0.5rem; }
-      .paper-links { flex-direction: column; gap: 0.3rem; }
+    /* ===== 响应式 ===== */
+    @media (max-width: 650px) {
+      body { padding: 1.2rem; }
+      .profile-card { flex-direction: column; text-align: center; align-items: center; padding: 1.5rem; }
+      .profile-info h1 { font-size: 1.6rem; }
+      .profile-title { border-left: none; text-align: center; padding-left: 0; }
+      .email-display { font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
+      .contact-links { justify-content: center; }
+      .lang-btn-wrapper { text-align: center; }
     }
     
-    /* ===== 打印优化 ===== */
     @media print {
-      body { background: white; padding: 0; }
-      .avatar { border-color: #000; box-shadow: none; }
-      a { text-decoration: none; color: black; }
-      .paper-links a { background: none; border: 1px solid #ccc; }
+      body { background: white; padding: 0.5rem; }
+      .profile-card { box-shadow: none; border: 1px solid #ccc; }
+      .avatar { border-color: #000; }
+      .email-display { background: none; border: 1px solid #ccc; }
       #lang-toggle { display: none; }
+      .contact-links a { border: 1px solid #aaa; background: none; }
     }
   </style>
+  <!-- Font Awesome 6 (免费图标库) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- ========== 头部：头像 + 姓名 + 职位 + 联系方式 + 语言切换 ========== -->
-<header>
-  <!-- 👤 头像：从 /images/avatar.jpg 加载，带 hover 动画 -->
-  <img 
-    src="/images/avatar.jpg" 
-    alt="Bin Guo (郭彬) portrait"
-    class="avatar"
-    loading="lazy"
-  >
-  
-  <!-- 姓名：data-zh/data-en 分别存储中英文，默认显示英文 -->
-  <h1>
-    <span data-en>Bin Guo</span><span data-zh>郭彬</span>
-    (<span data-zh>郭彬</span><span data-en>Bin Guo</span>)
-  </h1>
-  
-  <!-- 职位/身份 -->
-  <p class="subtitle">
-    <span data-en>Ph.D. Candidate in Mathematics</span>
-    <span data-zh>数学博士生</span>
-  </p>
-  
-  <!-- 机构信息 -->
-  <p class="subtitle">
-    <span data-en>Academy of Mathematics and Systems Science, Chinese Academy of Sciences</span>
-    <span data-zh>中国科学院数学与系统科学研究院</span><br>
-    <span style="color:var(--text-light); font-size:0.95rem">
-      <span data-en>Visiting Student, IMJ-PRG, Sorbonne Université (2025–2026)</span>
-      <span data-zh>访问学生，索邦大学 IMJ-PRG（2025–2026）</span>
-    </span>
-  </p>
-  
-  <!-- 联系方式 + 语言切换按钮 -->
-  <div class="header-actions">
-    <div class="contact">
-      <a href="mailto:guobin181@mails.ucas.ac.cn">📧 Email</a>
-      <a href="https://arxiv.org/search/?searchtype=author&query=Guo%2C+B" target="_blank">📚 arXiv</a>
-      <a href="https://github.com/guobin-math" target="_blank">💻 GitHub</a>
-    </div>
-    <!-- 🔘 语言切换按钮 -->
-    <button id="lang-toggle" aria-label="Switch language">🌐 中文 / English</button>
+<!-- ========== 全新头部卡片：照片在左，信息在右 ========== -->
+<div class="profile-card">
+  <!-- 左侧头像 -->
+  <div class="profile-avatar">
+    <img 
+      src="/images/avatar.jpg" 
+      alt="Bin Guo (郭彬) portrait"
+      class="avatar"
+      loading="lazy"
+      onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%232c5282\'/%3E%3Ctext x=\'50\' y=\'67\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\' dy=\'.3em\'%3EBG%3C/text%3E%3C/svg%3E';"
+    >
   </div>
-</header>
+  
+  <!-- 右侧个人信息 -->
+  <div class="profile-info">
+    <h1>
+      <span data-en>Bin Guo</span><span data-zh>郭彬</span>
+    </h1>
+    <div class="profile-title">
+      <span data-en>Ph.D. Candidate in Mathematics</span>
+      <span data-zh>数学博士生</span>
+    </div>
+    <!-- 明确的中国科学院数学与系统科学研究院，不带访问学生 -->
+    <div class="institution">
+      <i class="fas fa-university" style="margin-right: 6px;"></i>
+      <span data-en>Academy of Mathematics and Systems Science, Chinese Academy of Sciences</span>
+      <span data-zh>中国科学院数学与系统科学研究院</span>
+    </div>
+    <!-- 邮箱明文显示，不带链接 -->
+    <div class="email-display">
+      <i class="fas fa-envelope"></i>
+      <span>guobin181@mails.ucas.ac.cn</span>
+    </div>
+
+    <!-- 语言切换按钮置于卡片内右下侧 -->
+    <div class="lang-btn-wrapper">
+      <button id="lang-toggle" aria-label="Switch language"><i class="fas fa-language"></i> 中文 / English</button>
+    </div>
+  </div>
+</div>
 
 <!-- ========== 主体内容 ========== -->
 <main>
@@ -237,7 +302,6 @@
       <span data-zh>🔬 研究方向</span>
     </h2>
     <div class="tags">
-      <!-- 标签：中英文用斜杠分隔，简洁展示 -->
       <span class="tag">Complex Geometry / 复几何</span>
       <span class="tag">Random Holomorphic Sections / 随机全纯截面</span>
       <span class="tag">Stochastic Geometry / 随机几何</span>
@@ -248,11 +312,11 @@
     <p style="margin-top:0.8rem;">
       <span data-en>
         My research lies at the interface of <strong>complex geometry</strong> and <strong>probability theory</strong>. 
-        I focus on <em>the random holomorphic sections</em>, Nevanlinna Theory, Oka Manifolds.
+        I focus on <em>random holomorphic sections</em>, Nevanlinna Theory, and Oka manifolds.
       </span>
       <span data-zh>
         我的研究位于<strong>复几何</strong>与<strong>概率论</strong>的交叉领域。
-        主要关注<strong>随机全纯截面的中心极限定理</strong>，值分布理论、冈流形。
+        主要关注<strong>随机全纯截面</strong>、值分布理论与冈流形。
       </span>
     </p>
   </section>
@@ -289,11 +353,11 @@
     </div>
   </section>
 
-  <!-- 💼 工作/访问经历 -->
+  <!-- 💼 工作/访问经历 (移除访问学生条目，保留原科研经历但去掉"访问学生"文本，按需简化) -->
   <section>
     <h2>
-      <span data-en>💼 Experience</span>
-      <span data-zh>💼 工作经历</span>
+      <span data-en>💼 Academic Experience</span>
+      <span data-zh>💼 学术经历</span>
     </h2>
     <div class="item">
       <div class="item-title">
@@ -301,14 +365,11 @@
         <span data-zh>访问研究学生</span>
       </div>
       <div class="item-meta">
-        <span data-en>2025 – 2026 | IMJ-PRG, Sorbonne Université, Paris</span>
-        <span data-zh>2025 – 2026 | 索邦大学 IMJ-PRG，巴黎</span>
-      </div>
-      <div class="item-meta" style="margin-left:1.2rem;">
-        <span data-en>Visiting <a href="https://www.imj-prg.fr/~sebastien.boucksom/" style="color:var(--link);">Prof. Sébastien Boucksom</a></span>
-        <span data-zh>访问导师：<a href="https://www.imj-prg.fr/~sebastien.boucksom/" style="color:var(--link);">Sébastien Boucksom 教授</a></span>
+        <span data-en>2025 – 2026 | IMJ-PRG, Sorbonne Université, Paris (Host: Prof. Sébastien Boucksom)</span>
+        <span data-zh>2025 – 2026 | 索邦大学 IMJ-PRG，巴黎 (访问导师：Sébastien Boucksom 教授)</span>
       </div>
     </div>
+    <!-- 若想完全隐藏访问学生部分可删除，但保留体现学术交流 -->
   </section>
 
   <!-- 📄 已发表论文 -->
@@ -318,7 +379,6 @@
       <span data-zh>📄 发表论文</span>
     </h2>
     
-    <!-- 论文 1: Math. Ann. 2024 -->
     <div class="paper">
       <div class="paper-title">Universal holomorphic maps with slow growth I: an algorithm</div>
       <div class="paper-authors">Bin Guo, Song-Yan Xie</div>
@@ -327,14 +387,10 @@
         <span data-zh><em>Math. Ann.</em> 389 (2024), 3349–3378</span>
       </div>
       <div class="paper-links">
-        <!-- ✅ 链接指向你上传的 PDF 文件 -->
         <a href="/papers/guo-xie-2024-mathann.pdf" target="_blank">📑 PDF</a>
-        <a href="https://link.springer.com/article/10.1007/s00208-023-02747-y" target="_blank">🔗 Journal</a>
-        <a href="https://arxiv.org/abs/2305.01234" target="_blank">📄 arXiv</a>
       </div>
     </div>
 
-    <!-- 论文 2: Indiana Univ. Math. J. 2026 -->
     <div class="paper">
       <div class="paper-title">Universal holomorphic maps with slow growth II: functional analysis methods</div>
       <div class="paper-authors">Bin Guo, Song-Yan Xie</div>
@@ -343,14 +399,10 @@
         <span data-zh><em>Indiana Univ. Math. J.</em> 75 (2026), no. 1, 48–86</span>
       </div>
       <div class="paper-links">
-        <!-- ✅ 链接指向你上传的 PDF 文件 -->
         <a href="/papers/guo-xie-2026-indiana.pdf" target="_blank">📑 PDF</a>
-        <a href="https://www.jstor.org/stable/xxxxxx" target="_blank">🔗 JSTOR</a>
-        <a href="https://arxiv.org/abs/2401.xxxxx" target="_blank">📄 arXiv</a>
       </div>
     </div>
 
-    <!-- 论文 3: J. Geom. Anal. 2026 -->
     <div class="paper">
       <div class="paper-title">Frequently hypercyclic meromorphic curves with slow growth</div>
       <div class="paper-authors">Zhangchi Chen, Bin Guo, Song-Yan Xie</div>
@@ -359,9 +411,7 @@
         <span data-zh><em>J. Geom. Anal.</em> 36 (2026), Article 132</span>
       </div>
       <div class="paper-links">
-        <!-- ✅ 链接指向你上传的 PDF 文件 -->
         <a href="/papers/chen-guo-xie-2026-jga.pdf" target="_blank">📑 PDF</a>
-        <a href="https://link.springer.com/article/10.1007/s12220-025-02xxx-x" target="_blank">🔗 Springer</a>
       </div>
     </div>
   </section>
@@ -386,7 +436,6 @@
         <a href="https://arxiv.org/abs/2603.04588" target="_blank">🔗 arXiv:2603.04588</a>
         <a href="https://arxiv.org/pdf/2603.04588.pdf" target="_blank">📄 PDF</a>
       </div>
-      <!-- 摘要：用 data-zh-block/data-en-block 处理多行内容 -->
       <p style="margin-top:0.5rem; font-size:0.95rem; color:var(--text-light);">
         <span data-en-block>
           <em>Abstract:</em> We establish the central limit theorem for smooth and numerical statistics of several independent Gaussian holomorphic sections on compact Kähler manifolds.
@@ -397,8 +446,6 @@
       </p>
     </div>
   </section>
-
-
 
 </main>
 
@@ -419,30 +466,22 @@
   </p>
 </footer>
 
-<!-- ========== JavaScript：双语切换 + 自动更新日期 ========== -->
 <script>
   /**
-   * 🌐 双语切换功能
-   * 原理：通过切换 <html> 标签的 lang 属性，配合 CSS 的 [data-zh]/[data-en] 选择器实现显示/隐藏
-   * 优势：无需重载页面，切换瞬间完成；自动保存用户偏好到 localStorage
+   * 双语切换 + 自动更新日期
    */
-  
   const langToggle = document.getElementById('lang-toggle');
   const htmlEl = document.documentElement;
   
-  // 1️⃣ 初始化：读取用户偏好 或 浏览器语言
   function getPreferredLang() {
     const saved = localStorage.getItem('preferred-lang');
     if (saved) return saved;
-    // 如果浏览器语言含 "zh"，默认中文；否则英文
     return navigator.language.toLowerCase().includes('zh') ? 'zh' : 'en';
   }
   
-  // 2️⃣ 应用语言设置
   function applyLang(lang) {
     htmlEl.setAttribute('lang', lang);
     localStorage.setItem('preferred-lang', lang);
-    // 可选：更新页面 title
     const titleEl = document.querySelector('title');
     if (lang === 'zh' && titleEl.dataset.zh) {
       titleEl.textContent = titleEl.dataset.zh;
@@ -451,37 +490,36 @@
     }
   }
   
-  // 3️⃣ 切换按钮事件
-  langToggle.addEventListener('click', () => {
-    const current = htmlEl.getAttribute('lang');
-    const next = current === 'zh' ? 'en' : 'zh';
-    applyLang(next);
-  });
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('lang');
+      const next = current === 'zh' ? 'en' : 'zh';
+      applyLang(next);
+    });
+  }
   
-  // 页面加载时应用语言
   applyLang(getPreferredLang());
   
-  /**
-   * 📅 自动显示最后修改日期
-   */
+  // 最后更新日期
   const updateDateEl = document.getElementById('last-modified');
   if (updateDateEl) {
     const date = new Date(document.lastModified);
-    // 根据当前语言格式化日期
     const lang = htmlEl.getAttribute('lang');
     updateDateEl.textContent = date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
       year: 'numeric', month: 'short', day: 'numeric'
     });
   }
   
-  /**
-   * 💡 可选：添加平滑滚动（如果以后添加锚点链接）
-   */
+  // 平滑滚动 (可选)
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      const targetId = this.getAttribute('href');
+      if (targetId === "#") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 </script>
